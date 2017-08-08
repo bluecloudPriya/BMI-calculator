@@ -1,0 +1,16 @@
+<h3><i>{{title}}{{name}}</i></h3>
+<form [formGroup]="calculator">
+  <label class="center-block">Name:</label>
+    <input class="form-control" formControlName="name" #nameTag type="text" [(ngModel)]="name" title="Enter your name" />
+  <label class="center-block">Age:</label>
+    <input class="form-control" formControlName="age" #age type="text" title="Enter your age">
+  <label class="center-block">Weight:</label>
+    <input class="form-control" formControlName="weight" #weight type="text" title="Enter your weight (Only an integer number)">
+  <label class="center-block">Height:</label>
+    <input class="form-control" formControlName="height" #height type="text" title="Enter your height in cm">
+  <label class="center-block">Sex:</label>
+    <input class="form-control" formControlName="sex" #sex type="text" title="Select your genre">
+</form>
+<p>Form value: {{ calculator.value | json }}</p>
+<p>Form status: {{ calculator.status | json }}</p>
+<button type="submit" [disabled]="!calculator.valid" (click)="calculateBMI(age.value, weight.value, height.value, sex.value)">Calculate</button>
